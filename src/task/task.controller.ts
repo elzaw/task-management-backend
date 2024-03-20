@@ -27,6 +27,10 @@ export class TaskController {
   findAll() {
     return this.taskService.findAll();
   }
+  @Get('user/:userId')
+  findTasksByUser(@Param('userId') userId: string) {
+    return this.taskService.findTasksByUser(userId);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

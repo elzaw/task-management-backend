@@ -51,4 +51,13 @@ export class TaskService {
     }
     return deletedTask;
   }
+
+  async findTasksByUser(userId: string): Promise<Task[]> {
+    const user = await this.userModel.findById(userId).exec();
+    if (!user) {
+      throw new HttpException('User not found', 404);
+    }
+    const tasks = await this.taskModel.find({ user: userId });
+    return tasks;
+  }
 }

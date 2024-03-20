@@ -22,26 +22,6 @@ export class UsersService {
     return createdUser.save();
   }
 
-  // async login(username: string, password: string): Promise<string> {
-  //   const user = await this.userModel.findOne({ username }).exec();
-  //   if (!user) {
-  //     throw new UnauthorizedException('Invalid credentials');
-  //   }
-
-  //   const isPasswordValid = await bcrypt.compare(password, user.password);
-  //   if (!isPasswordValid) {
-  //     throw new UnauthorizedException('Invalid credentials');
-  //   }
-
-  //   const token = jwt.sign(
-  //     { userId: user._id, username },
-  //     'this-is-my-secret',
-  //     {
-  //       expiresIn: '1h',
-  //     },
-  //   );
-  //   return token;
-  // }
 
   async findAll(): Promise<User[]> {
     return this.userModel.find().exec();
