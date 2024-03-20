@@ -7,11 +7,11 @@ import { UsersModule } from './users/users.module';
 
 import { AuthModule } from './auth/auth.module';
 
-import mongoConfig from '../mongo.config';
+require('dotenv').config();
 
 @Module({
   imports: [
-    MongooseModule.forRoot(mongoConfig.uri),
+    MongooseModule.forRoot(process.env.URI),
     TaskModule,
     UsersModule,
     AuthModule,
