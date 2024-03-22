@@ -14,6 +14,15 @@ export class User {
 
   @Prop({ type: Date, default: Date.now })
   createdAt: Date;
+
+  @Prop()
+  name: string; // Add field for user's name
+
+  @Prop()
+  profilePictureUrl: string; // Add field for profile picture URL
+
+  @Prop()
+  profile: string; // Add field for a linkedin profile url
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Put,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -20,14 +21,17 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  // @Post('/login')
-  // async login(
-  //   @Body() data: { username: string; password: string },
-  // ): Promise<{ token: string }> {
-  //   const { username, password } = data;
-  //   const token = await this.usersService.login(username, password);
-  //   return { token };
-  // }
+  @Put('/profile')
+  async getUserProfile(
+    @Body() requestBody: { linkedinUrl: string; username: string },
+  ) {
+    const { linkedinUrl, username } = requestBody;
+    const profileData = await this.usersService.scrapeUserData(
+      linkedinUrl,
+      username,
+    );
+    return profileData;
+  }
 
   @Get()
   findAll() {
