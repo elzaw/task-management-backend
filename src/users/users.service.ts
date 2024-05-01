@@ -41,14 +41,7 @@ export class UsersService {
         .exec();
 
       return user;
-      // // Extract other profile information similarly...
-      // return {
-      //   name,
-      //   username,
-      //   imageUrl,
-      //   profile: linkedinUrl, // Assuming you want to include the LinkedIn URL in the profile data
-      //   // Other profile data...
-      // };
+      
     } catch (error) {
       throw new Error(`Error scraping user data: ${error.message}`);
     }
